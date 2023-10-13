@@ -12,9 +12,9 @@ email: n.mayot@uea.ac.uk
 ├── /data : the data used are stored here
 │   
 └── /scripts
-    ├── Figure_... .m : to produce a figure (one file for each figure in the manuscript)
     ├── hybrid_approach.m : to perform global, regional, or latitudinal analysis
-    └── table_01.m : to calculate the values reported in Table 1
+    ├── fig_04.m          : to produce a fig 4 (fugacity coeff, open fCO2-products and SOCAT data)
+    └── table_01.m        : to calculate the values reported in Table 1
 ```
 
 Note that the data are not accessible on GitHub. They need to be downloaded locally from the mentioned sources and placed inside the correct folders. 
