@@ -3,9 +3,15 @@
 clearvars
 
 % ---- extract values from table
-T = readtable('data/Cflu_RSS_n_NoCoast.xlsx','sheet','Global');
-X = [T.Cflu_PIHQ T.Cflu_PIHM T.Cflu_PIHR T.Cflu_PIHT];
-Y = [T.MSE_PIHQ  T.MSE_PIHM  T.MSE_PIHR  T.MSE_PIHT];
+T = readtable('../Cflu_RSS_n_RNB_coast2.xlsx','sheet','Global');
+% X = [T.Cflu_RVB0 T.Cflu_RVB1 T.Cflu_RVA0 T.Cflu_RVB2 T.Cflu_RVB3];
+% Y = [T.MSE_RVB0 T.MSE_RVB1  T.MSE_RVA0  T.MSE_RVB2  T.MSE_RVB3];
+% X = [T.Cflu_RVY0 T.Cflu_RVY1 T.Cflu_RVA0 T.Cflu_RVY3];
+% Y = [T.MSE_RVY0 T.MSE_RVY1  T.MSE_RVA0  T.MSE_RVY3];
+X = [T.Cflu_RNB1 T.Cflu_RNA0 T.Cflu_RNB0 T.Cflu_RNB2 T.Cflu_RNB4];
+Y = [T.MSE_RNB1  T.MSE_RNA0  T.MSE_RNB0  T.MSE_RNB2 T.MSE_RNB4];
+% X = [T.Cflu_RNY1 T.Cflu_RNY2 T.Cflu_RNB0 T.Cflu_RNY4 T.Cflu_RNY3];
+% Y = [T.MSE_RNY1  T.MSE_RNY2  T.MSE_RNB0  T.MSE_RNY4 T.MSE_RNY3];
 N = T.n;
 
 yyyy = T.years;
@@ -112,12 +118,22 @@ end
 clearvars
 
 % ---- extract values from table
-T = readtable('data/Cflu_RSS_n_NoCoast.xlsx','sheet','North'); % North, Tropics, South, latitude
-X = [T.Cflu_PIHQ T.Cflu_PIHM T.Cflu_PIHR T.Cflu_PIHT];
-Y = [T.MSE_PIHQ  T.MSE_PIHM  T.MSE_PIHR  T.MSE_PIHT];
+T = readtable('../Cflu_RSS_n_RNB_coast2.xlsx','sheet','South'); % North, Tropics, South, latitude
+% X = [T.Cflu_RVB0 T.Cflu_RVB1 T.Cflu_RVA0 T.Cflu_RVB2 T.Cflu_RVB3];
+% Y = [T.MSE_RVB0 T.MSE_RVB1  T.MSE_RVA0  T.MSE_RVB2  T.MSE_RVB3];
+X = [T.Cflu_RNB1 T.Cflu_RNA0 T.Cflu_RNB0 T.Cflu_RNB2 T.Cflu_RNB4];
+Y = [T.MSE_RNB1  T.MSE_RNA0  T.MSE_RNB0  T.MSE_RNB2 T.MSE_RNB4];
+% X = [T.Cflu_RVY0 T.Cflu_RVY1 T.Cflu_RVA0 T.Cflu_RVY4 T.Cflu_RVY3];
+% Y = [T.MSE_RVY0 T.MSE_RVY1  T.MSE_RVA0  T.MSE_RVY4 T.MSE_RVY3];
+% X = [T.Cflu_RNY1 T.Cflu_RNY2 T.Cflu_RNB0 T.Cflu_RNY4 T.Cflu_RNY3];
+% Y = [T.MSE_RNY1  T.MSE_RNY2  T.MSE_RNB0  T.MSE_RNY4 T.MSE_RNY3];
+% X = [T.Cflu_RNY1 T.Cflu_RNY2 T.Cflu_RNB0 T.Cflu_RNY4 T.Cflu_RNY3 T.Cflu_RNB1  T.Cflu_RNA0  T.Cflu_RNB2 T.Cflu_RNB4];
+% Y = [T.MSE_RNY1  T.MSE_RNY2  T.MSE_RNB0  T.MSE_RNY4 T.MSE_RNY3 T.MSE_RNB1  T.MSE_RNA0  T.MSE_RNB2 T.MSE_RNB4];
+% X = [T.Cflu_RVB1 T.Cflu_RVA0 T.Cflu_RVB2 T.Cflu_RVB3 T.Cflu_RVY0 T.Cflu_RVY1 T.Cflu_RVY4 T.Cflu_RVY3];
+% Y = [T.MSE_RVB1  T.MSE_RVA0  T.MSE_RVB2  T.MSE_RVB3 T.MSE_RVY0 T.MSE_RVY1  T.MSE_RVY4 T.MSE_RVY3];
 N = T.n;
 
-yyyy = T.years;
+yyyy = T{:,1};
 unconstrained = [];
 uncertained   = [];
 ErrLow  = nan(length(N),1);
@@ -209,14 +225,14 @@ end
 clearvars
 
 % ---- extract values from table
-T = readtable('data/Cflu_RSS_n_NoCoast.xlsx','sheet','Global');
-X = [T.Cflu_PIHQ T.Cflu_PIHM T.Cflu_PIHR T.Cflu_PIHT];
-Y = [T.MSE_PIHQ  T.MSE_PIHM  T.MSE_PIHR  T.MSE_PIHT];
+T = readtable('../Cflu_RSS_n_RNB.xlsx','sheet','Global');
+X = [T.Cflu_RNB1 T.Cflu_RNA0 T.Cflu_RNB0 T.Cflu_RNB2 T.Cflu_RNB4];
+Y = [T.MSE_RNB1  T.MSE_RNA0  T.MSE_RNB0  T.MSE_RNB2 T.MSE_RNB4];
 N = T.n;
 N_3 = sum([N(1:end-2),N(2:end-1),N(3:end)],2);
 X_3 = movmean(X,3,'Endpoints','discard');
 Y_3 = nan(length(N_3),size(Y,2));
-for m = 1:4
+for m = 1:5
     Y_3(:,m) = sum([Y(1:end-2,m),Y(2:end-1,m),Y(3:end,m)].*[N(1:end-2),N(2:end-1),N(3:end)],2,'omitnan')./N_3;
 end
 
