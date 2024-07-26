@@ -77,19 +77,19 @@ TS(:,1,4) = datain(:,2);
 YDEC(:,1,4) = ydec;
 YDEC2(:,1,4) = ydec2;
 
-% T    = readtable('../Cflu_RSS_n_RNB.xlsx','sheet','Global');
-% PIHM = T.Cflu_Opt_3rd_3y;
-% ywanted = T.years;
-% 
-% results_hyb = nan(3,2);
-% y = PIHM-nanmean(PIHM(21:30));
-% datain = [ywanted(ismember(ywanted, yw)),y(ismember(ywanted, yw))];
-% [~, ~, h, sig, ~, ~, ~, senD] = ktaub(datain, alpha, 0);
-% results_hyb(1,:) = [senD*10 std(detrend(datain(:,2)))];
-% [ydec2, ydec] = ts_decompo(y(ismember(ywanted, yw(1:end-1))));
-% TS(:,1,5) = datain(:,2);
-% YDEC(1:end-1,1,5) = ydec;
-% YDEC2(1:end-1,1,5) = ydec2;
+T    = readtable('../Cflu_RSS_n_RNB.xlsx','sheet','Global');
+PIHM = T.Cflu_Opt_3rd_3y;
+ywanted = T.years;
+
+results_hyb = nan(3,2);
+y = PIHM-nanmean(PIHM(21:30));
+datain = [ywanted(ismember(ywanted, yw)),y(ismember(ywanted, yw))];
+[~, ~, h, sig, ~, ~, ~, senD] = ktaub(datain, alpha, 0);
+results_hyb(1,:) = [senD*10 std(detrend(datain(:,2)))];
+[ydec2, ydec] = ts_decompo(y(ismember(ywanted, yw(1:end-1))));
+TS(:,1,5) = datain(:,2);
+YDEC(1:end-1,1,5) = ydec;
+YDEC2(1:end-1,1,5) = ydec2;
 
 % Figure
 subplot(3,1,1)
@@ -126,8 +126,8 @@ set(gca,'Xtick',1990:10:2022,'Xgrid','on','Ygrid','on','Xlim',[1990 2022],'Ylim'
 ylabel('CO_2 flux anomaly (PgC yr^{-1})')
 title("(c) Decadal component of the ocean CO_2 sink variability",'fontweight','normal')
 
-% set(gcf,'PaperPosition',[1 1 16 34])
-% print('/Users/nicolasmayot/Documents/UEA-postdoc/Mirror/redaction/20220505 - Erik/FigS1.jpeg','-djpeg','-r300')
+set(gcf,'PaperPosition',[1 1 16 34])
+print('/Users/nicolasmayot/Documents/UEA-postdoc/Mirror/redaction/20220505 - Erik/FigS1.jpeg','-djpeg','-r300')
 
 function [ydec2, ydec] = ts_decompo(ts)
     % decadal component

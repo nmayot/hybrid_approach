@@ -176,4 +176,4 @@ for r = 1:4
 end
 
 % set(gcf,'PaperPosition',[1 1 30 16.5])
-% print('fig03_RNB.jpeg','-djpeg','-r300')
+% print('fig03.jpeg','-djpeg','-r300')

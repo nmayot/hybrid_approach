@@ -48,10 +48,10 @@ ytime = str2num(datestr(time,'yyyy'));
 
 fco2_count_nobs(fco2_count_nobs ~= 0) = 1;
 A = permute(sum(reshape(sum(reshape(fco2_count_nobs,[],length(ytime))),12,[],length(unique(ytime)))),[3 1 2]);
-A(unique(ytime) < 2005) = NaN;
+A(unique(ytime) < 1990) = NaN;
 
 bar(unique(ytime),A/1e4,'FaceColor','k')
-set(gca,'Ylim',[0 6])
+set(gca,'Ylim',[0 8])
 hold on
 
 %%
@@ -63,7 +63,7 @@ ytime = str2num(datestr(time,'yyyy'));
 
 fco2_count_nobs(fco2_count_nobs ~= 0) = 1;
 A = permute(sum(reshape(sum(reshape(fco2_count_nobs,[],length(ytime))),12,[],length(unique(ytime)))),[3 1 2]);
-A(unique(ytime) < 2005) = NaN;
+A(unique(ytime) < 1990) = NaN;
 
 bar(unique(ytime),A/1e4,'FaceColor',[.85 .30 .10])
 
@@ -76,12 +76,12 @@ ytime = str2num(datestr(time,'yyyy'));
 
 fco2_count_nobs(fco2_count_nobs ~= 0) = 1;
 A = permute(sum(reshape(sum(reshape(fco2_count_nobs,[],length(ytime))),12,[],length(unique(ytime)))),[3 1 2]);
-A(unique(ytime) < 2005) = NaN;
+A(unique(ytime) < 1990) = NaN;
 
 bar(unique(ytime),A/1e4,'FaceColor',[.45 .45 .70])
 
 %%
-set(gca,'ycolor','k','Ytick',[0 .5 1.75])
+set(gca,'ycolor','k','Ytick',[0 1 2])
 label_h = ylabel({'Monthly grid cells (1° x 1°)';'per year (x10^{4})'});
 label_h.Position(2) = 0;
 label_h.Position(2) = 1;
@@ -89,5 +89,5 @@ legend([h1 h2 h3 h4 h5 h6 h7],{'1\sigma 2023 fCO_2-products','2023 fCO_2-product
     '2023 GOBMs','2022 GOBMs','2021 GOBMs'},'location','NorthWest','NumColumns',2)
 
 
-% set(gcf,'PaperPosition',[0 0 22 13.5])
-% print('figSXX_last_GCB.jpeg','-djpeg','-r300')
+set(gcf,'PaperPosition',[0 0 22 13.5])
+print('fig06.jpeg','-djpeg','-r300')
