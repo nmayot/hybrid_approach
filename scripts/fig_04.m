@@ -21,41 +21,50 @@ GOBM = [5.87	10.13	-4.29		0.31	1.60	2.43
 
 SOCAT = [1.91	18.76	4.72];
 
+ptsize=10;
 
 data = PROD(:,2);
 h1 = boxchart(.5*ones(length(data),1), data, 'BoxFaceColor', [.5 .6 .8]);
 hold on
-scatter(.5*ones(length(data),1), data,'MarkerEdgeColor', 'k','MarkerFaceColor', [.5 .6 .8]);
+s = scatter(.5*ones(length(data),1), data, 'MarkerEdgeColor', 'k','MarkerFaceColor', [.5 .6 .8]);
+s.SizeData = ptsize;
 h2 = scatter(1,SOCAT(2),50,.5,'o','MarkerEdgeColor','k','MarkerFaceColor',[.2 .6 .2]);
 data = GOBM(:,2);
 h3 = boxchart(1.5*ones(length(data),1), data, 'BoxFaceColor', [.5 .5 .5]);
-scatter(1.5*ones(length(data),1), data,'MarkerEdgeColor', 'k','MarkerFaceColor', [.5 .5 .5]);
+s=scatter(1.5*ones(length(data),1), data,'MarkerEdgeColor', 'k','MarkerFaceColor', [.5 .5 .5]);
+s.SizeData = ptsize;
 
 data = PROD(:,3);
 boxchart(3*ones(length(data),1), data, 'BoxFaceColor', [.5 .6 .8])
-scatter(3*ones(length(data),1), data,'MarkerEdgeColor', 'k','MarkerFaceColor', [.5 .6 .8]);
+s=scatter(3*ones(length(data),1), data, ptsize,'MarkerEdgeColor', 'k','MarkerFaceColor', [.5 .6 .8]);
+s.SizeData = ptsize;
 scatter(3.5,SOCAT(3),50,'o','MarkerEdgeColor','k','MarkerFaceColor',[.2 .6 .2])
 data = GOBM(:,3);
 boxchart(4*ones(length(data),1), data, 'BoxFaceColor', [.5 .5 .5])
-scatter(4*ones(length(data),1), data,'MarkerEdgeColor', 'k','MarkerFaceColor', [.5 .5 .5]);
+s=scatter(4*ones(length(data),1), data,'MarkerEdgeColor', 'k','MarkerFaceColor', [.5 .5 .5]);
+s.SizeData = ptsize;
 
 plot([5 5],[-25 30],'k-')
 
 data = PROD(:,5);
 boxchart(6*ones(length(data),1), data, 'BoxFaceColor', [.5 .6 .8])
-scatter(6*ones(length(data),1), data,'MarkerEdgeColor', 'k','MarkerFaceColor', [.5 .6 .8]);
+s=scatter(6*ones(length(data),1), data,'MarkerEdgeColor', 'k','MarkerFaceColor', [.5 .6 .8]);
+s.SizeData = ptsize;
 data = GOBM(:,5);
 b = boxchart(7*ones(length(data),1), data, 'BoxFaceColor', [.5 .5 .5]);
 b.MarkerStyle = '.';
 b.MarkerColor = 'w';
-scatter(7*ones(length(data),1), data,'MarkerEdgeColor', 'k','MarkerFaceColor', [.5 .5 .5]);
+s=scatter(7*ones(length(data),1), data,'MarkerEdgeColor', 'k','MarkerFaceColor', [.5 .5 .5]);
+s.SizeData = ptsize;
 
 data = PROD(:,6);
 boxchart(8.5*ones(length(data),1), data, 'BoxFaceColor', [.5 .6 .8])
-scatter(8.5*ones(length(data),1), data,'MarkerEdgeColor', 'k','MarkerFaceColor', [.5 .6 .8]);
+s=scatter(8.5*ones(length(data),1), data,'MarkerEdgeColor', 'k','MarkerFaceColor', [.5 .6 .8]);
+s.SizeData = ptsize;
 data = GOBM(:,6);
 boxchart(9.5*ones(length(data),1), data, 'BoxFaceColor', [.5 .5 .5])
-scatter(9.5*ones(length(data),1), data,'MarkerEdgeColor', 'k','MarkerFaceColor', [.5 .5 .5]);
+s=scatter(9.5*ones(length(data),1), data,'MarkerEdgeColor', 'k','MarkerFaceColor', [.5 .5 .5]);
+s.SizeData = ptsize;
 
 legend([h1 h3 h2],{'fCO_2-products','GOBMs','SOCAT'},'location','north')
 ylabel('Decadal trend in \DeltafCO_2 (μatm decade^{-1})')
@@ -63,6 +72,7 @@ set(gca,'box','on','Xtick',[1 3.5 6.5 9],'XTickLabel',{'2000s','2010s','2000s','
 
 text(1.4,32,'Subsampled','Fontweight','bold')
 text(6.55,32,'Not Subsampled','Fontweight','bold')
+set(gca,'FontSize',11)
 
-% set(gcf,'PaperPosition',[1 1 15 10])
-% print('fig04_boxplot.jpeg','-djpeg','-r300')
+set(gcf,'PaperPosition',[0 0 15 10])
+print('fig04_boxplot.eps','-depsc')

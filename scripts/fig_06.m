@@ -18,8 +18,9 @@ h2 = plot(T.years,T{:,5}-repmat(nanmean(T{yanom,5}),length(T.years),1),'k-','lin
 h3 = plot(T.years,T{:,4}-repmat(nanmean(T{yanom,4}),length(T.years),1),'-','color',[.85 .30 .10],'linewidth',2);
 h4 = plot(T.years,T{:,3}-repmat(nanmean(T{yanom,3}),length(T.years),1),'-','color',[.45 .45 .70],'linewidth',2);
 
-set(gca,'Xlim',[1990 2023],'Ylim',[-1.2 1.2],'Ygrid','on','Yminorgrid','on','Xminorgrid','on','Xgrid','on','box','on','Layer','top','ycolor','k')
+set(gca,'Xlim',[1990 2023],'Ylim',[-1.2 1.2],'Ygrid','on','Yminorgrid','on','Xminorgrid','on','Xgrid','on','box','on','ycolor','k')
 ylabel('CO_2 flux anomaly (PgC yr^{-1})')
+set(gca,'FontSize',11)
 
 %% Change in GOBMs over the last 3 GCB updates
 T = readtable('data/dataprod_GCB_19-23.xlsx','sheet','gobms');
@@ -88,6 +89,7 @@ label_h.Position(2) = 1;
 legend([h1 h2 h3 h4 h5 h6 h7],{'1\sigma 2023 fCO_2-products','2023 fCO_2-products','2022 fCO_2-products','2021 fCO_2-products',...
     '2023 GOBMs','2022 GOBMs','2021 GOBMs'},'location','NorthWest','NumColumns',2)
 
-
+set(gca,'FontSize',11)
+set(gcf,'Renderer','painters');
 set(gcf,'PaperPosition',[0 0 22 13.5])
-print('fig06.jpeg','-djpeg','-r300')
+print('fig06.eps','-depsc')
